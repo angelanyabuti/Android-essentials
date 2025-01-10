@@ -1,16 +1,9 @@
 fun main() {
-    val trafficLightColor = "Black"
-    val message = if (trafficLightColor == "Red") "Stop"
-    else if (trafficLightColor == "Amber") "Get Ready"
-    else if (trafficLightColor == "Green") "Go"
-    else "Invalid Color"
-    println(message)
+    var favouriteColor: String? = "Maroon"
+    favouriteColor = null
+    println(favouriteColor)
 
-    val output = when(trafficLightColor) {
-        "Red" -> "Stop"
-        "Amber" -> "Get Ready"
-        "Green" -> "Go"
-        else -> "Invalid color"
-    }
-    println(output)
+    var x : Int? = 9
+    x = null
+    println(x)
 }

@@ -1,4 +1,9 @@
 fun main() {
-    var favouriteColor: String ? = "maroon"
-    println(favouriteColor!!.length)  //accessing properties of nullable variables
+    var favouriteColor: String? = null
+
+    if (favouriteColor != null){
+        println("The number of characters in your favourite colors name is ${favouriteColor.length}.")
+    } else {
+        println("You didn't input a name")
+    }
 }

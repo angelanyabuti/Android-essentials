@@ -1,9 +1,10 @@
 fun main() {
-    var favouriteColor: String? = null
+    var favouriteColor: String? = "maroon"
 
-    if (favouriteColor != null){
-        println("The number of characters in your favourite colors name is ${favouriteColor.length}.")
+    val length = if (favouriteColor != null){
+        favouriteColor.length
     } else {
-        println("You didn't input a name")
+        0
     }
+    println("The length of your favourite color's name is $length")
 }

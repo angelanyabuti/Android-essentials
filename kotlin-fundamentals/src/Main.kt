@@ -13,10 +13,10 @@ open class SmartDevice(val name: String, val category: String) {//primary constr
         get() = 2
         set(value) = TODO()*/
 
-    fun turnOn() {
+    open fun turnOn() {
         println("Smart device has been turned on")
     }
-    fun turnOff() {
+    open fun turnOff() {
         println("Smart device has been turned off")
     }
 }
@@ -41,6 +41,14 @@ class SmartTvDevice(deviceName: String, deviceCategory: String) :
                 channelNumber++
                 println("Speaker volume increased to $speakerVolume")
             }
+            override fun turnOn() {
+                deviceStatus = "on"
+                println("$name is turned on. Speaker volume is set to $speakerVolume and channel number is " + "set to $channelNumber.")
+            }
+            override fun turnOff() {
+                deviceStatus = "off"
+                println("$name turned off")
+            }
         }
 
 //smartlight subclass
@@ -52,10 +60,21 @@ class SmartLightDevice(deviceName: String, deviceCategory: String) :
                       field = value
                   }
               }
-    fun increaseBrightness() {
-        brightnessLevel++
-        println("Brightness level has been increased to $brightnessLevel")
-    }
+        fun increaseBrightness() {
+            brightnessLevel++
+            println("Brightness level has been increased to $brightnessLevel")
+        }
+        override fun turnOn(){ //the override keyword informs the kotlin runtime to execute the code defined in the subclass
+            deviceStatus = "on"
+            brightnessLevel = 2
+            println("$name turned on. The brightness level is $brightnessLevel")
+
+        }
+        override fun turnOff() {
+            deviceStatus = "off"
+            brightnessLevel = 0
+            println("Smart Light turned off")
+        }
       }
 
 //Has - A relationship
@@ -106,7 +125,10 @@ class SmartHome(
 
 fun main() {
     val smartTvDevice = SmartDevice(name = "Android TV", category = "Entertainment")
-    println("Device name is: ${smartTvDevice.name}")
-    smartTvDevice.turnOn() //calling the turn on method
+    var smartDevice: SmartDevice = SmartTvDevice("Android TV","Entertainment")
+    //println("Device name is: ${smartTvDevice.name}")
+    smartDevice.turnOn() //calling the turn on method
     smartTvDevice.turnOff() //calling the turn off method
+    smartDevice = SmartLightDevice("Google Light", "Utility")
+    smartDevice.turnOn()
 }

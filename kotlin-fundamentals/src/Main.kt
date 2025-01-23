@@ -1,5 +1,7 @@
 open class SmartDevice(val name: String, val category: String) {//primary constructor for the class smartDevice
     var deviceStatus = "online"
+
+    open val deviceType = "unknown"
     //secondary constructor initialization                          //initialize primary constructor
     constructor(name: String, category: String, statusCode: Int) : this(name, category) {
         deviceStatus = when (statusCode) {
@@ -23,6 +25,8 @@ open class SmartDevice(val name: String, val category: String) {//primary constr
 //smarttv subclass
 class SmartTvDevice(deviceName: String, deviceCategory: String) :
         SmartDevice(name = deviceName, category = deviceCategory){
+
+        override val deviceType = "Smart TV"
             var speakerVolume = 2
                 set(value) {
                     if (value in 0..100)
@@ -54,6 +58,7 @@ class SmartTvDevice(deviceName: String, deviceCategory: String) :
 //smartlight subclass
 class SmartLightDevice(deviceName: String, deviceCategory: String) :
       SmartDevice(name = deviceName, category = deviceCategory) {
+    override val deviceType = "Smart Light"
           var brightnessLevel = 0
               set(value)  {
                   if (value in 0..100) {

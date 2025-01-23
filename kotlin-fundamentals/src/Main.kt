@@ -1,5 +1,6 @@
 open class SmartDevice(val name: String, val category: String) {//primary constructor for the class smartDevice
     var deviceStatus = "online"
+    protected set
 
     open val deviceType = "unknown"
     //secondary constructor initialization                          //initialize primary constructor
@@ -88,12 +89,16 @@ class SmartHome(
     val smartTvDevice: SmartTvDevice,
     val SmartLightDevice: SmartLightDevice
 ){
+    var deviceTurnOnCount = 0
+    private set
     //calls the turnOn() method on the smartTvDevice
     fun turnOnTv() {
+        deviceTurnOnCount++
         smartTvDevice.turnOn()
     }
     //calls the turnOff() method on the smartTvDevice
     fun turnOffTv() {
+        deviceTurnOnCount--
         smartTvDevice.turnOff()
     }
     //calls the increaseSpeakerVolume() method on the smartTvDevice
@@ -106,10 +111,12 @@ class SmartHome(
     }
     //calls the turnOn() method on the smartLightDevice object
     fun turnOnLight() {
+        deviceTurnOnCount++
         SmartLightDevice.turnOn()
     }
     //calls the turnoff method on the SmartLightDevice object
     fun  turnOffLight() {
+        deviceTurnOnCount--
         SmartLightDevice.turnOff()
     }
     //calls the increaseBrightness() method

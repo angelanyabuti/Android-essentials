@@ -14,10 +14,10 @@ open class SmartDevice(val name: String, val category: String) {//primary constr
         set(value) = TODO()*/
 
     open fun turnOn() {
-        println("Smart device has been turned on")
+        deviceStatus = "on"
     }
     open fun turnOff() {
-        println("Smart device has been turned off")
+        deviceStatus = "off"
     }
 }
 //smarttv subclass
@@ -42,11 +42,11 @@ class SmartTvDevice(deviceName: String, deviceCategory: String) :
                 println("Speaker volume increased to $speakerVolume")
             }
             override fun turnOn() {
-                deviceStatus = "on"
+                super.turnOn() //reusing superclass code in subclasses with super keyword
                 println("$name is turned on. Speaker volume is set to $speakerVolume and channel number is " + "set to $channelNumber.")
             }
             override fun turnOff() {
-                deviceStatus = "off"
+                super.turnOff() //reusing superclass code in subclasses with super keyword
                 println("$name turned off")
             }
         }
@@ -65,13 +65,13 @@ class SmartLightDevice(deviceName: String, deviceCategory: String) :
             println("Brightness level has been increased to $brightnessLevel")
         }
         override fun turnOn(){ //the override keyword informs the kotlin runtime to execute the code defined in the subclass
-            deviceStatus = "on"
+            super.turnOn() //reusing superclass code in subclasses with super keyword
             brightnessLevel = 2
             println("$name turned on. The brightness level is $brightnessLevel")
 
         }
         override fun turnOff() {
-            deviceStatus = "off"
+            super.turnOff() //reusing superclass code in subclasses with super keyword
             brightnessLevel = 0
             println("Smart Light turned off")
         }

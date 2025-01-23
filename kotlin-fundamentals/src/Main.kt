@@ -42,9 +42,9 @@ class SmartTvDevice(deviceName: String, deviceCategory: String) :
                 speakerVolume++
                 println("Speaker volume increased to $speakerVolume")
             }
-            fun nextChannel() {
+           protected fun nextChannel() {
                 channelNumber++
-                println("Speaker volume increased to $speakerVolume")
+                println("Speaker volume increased to $channelNumber")
             }
             override fun turnOn() {
                 super.turnOn() //reusing superclass code in subclasses with super keyword
@@ -106,9 +106,9 @@ class SmartHome(
         smartTvDevice.increaseSpeakerVolume()
     }
     //calls the nextChannel() method on the smartTvDevice
-    fun changeTvChannelToNext() {
+    /*fun changeTvChannelToNext() {
         smartTvDevice.nextChannel()
-    }
+    }*/
     //calls the turnOn() method on the smartLightDevice object
     fun turnOnLight() {
         deviceTurnOnCount++

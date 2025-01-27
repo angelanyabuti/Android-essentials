@@ -1,4 +1,5 @@
-open class SmartDevice(val name: String, val category: String) {//primary constructor for the class smartDevice
+//visibility modifiers for constructors
+open class SmartDevice protected constructor(val name: String, val category: String) {//primary constructor for the class smartDevice
     var deviceStatus = "online"
     protected set
 
@@ -136,11 +137,11 @@ class SmartHome(
 
 
 fun main() {
-    val smartTvDevice = SmartDevice(name = "Android TV", category = "Entertainment")
+    //val smartTvDevice = SmartDevice(name = "Android TV", category = "Entertainment")
     var smartDevice: SmartDevice = SmartTvDevice("Android TV","Entertainment")
     //println("Device name is: ${smartTvDevice.name}")
     smartDevice.turnOn() //calling the turn on method
-    smartTvDevice.turnOff() //calling the turn off method
+   // smartTvDevice.turnOff() //calling the turn off method
     smartDevice = SmartLightDevice("Google Light", "Utility")
     smartDevice.turnOn()
 }

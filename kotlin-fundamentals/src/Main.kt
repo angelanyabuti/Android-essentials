@@ -1,8 +1,16 @@
 fun main() {
-    val trickFunction =  trick //you do not add brackets because we are not calling the function
-    trick()
+    val treatFunction = trickOrTreat(false)
+    val trickFunction = trickOrTreat(true)
+    treatFunction()
     trickFunction()
-    treat()
+}
+//Using a function as a return type
+fun trickOrTreat(isTrick: Boolean): () -> Unit {
+    if (isTrick){
+        return trick
+    }else {
+        return treat
+    }
 }
 val trick = {
     println("No treats")

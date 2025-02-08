@@ -1,9 +1,8 @@
 fun main() {
-    val coins: (Int) -> String = { //omitting the parameter name and using it
+    /*val coins: (Int) -> String = { //omitting the parameter name and using it
         "$it quarters"
-    }
-
-    val treatFunction = trickOrTreat(false, coins)
+    }*/
+    val treatFunction = trickOrTreat(false, {"$it quarters"}) //pass a lambda expression directly into a function
     val trickFunction = trickOrTreat(true, null)
     treatFunction()
     trickFunction()

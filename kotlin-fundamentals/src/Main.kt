@@ -4,8 +4,10 @@ fun main() {
     }*/
     val treatFunction = trickOrTreat(false) {"$it quarters"} //using trailing lambda syntax
     val trickFunction = trickOrTreat(true, null)
-    treatFunction()
     trickFunction()
+    repeat(4){//repeat function
+        treatFunction()
+    }
 }
 //Using a function as a return type
 fun trickOrTreat(isTrick: Boolean, extraTreat: ((Int) -> String)?): () -> Unit {

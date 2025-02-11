@@ -1,27 +1,20 @@
 fun main() {
-    /*val coins: (Int) -> String = { //omitting the parameter name and using it
-        "$it quarters"
-    }*/
-    val treatFunction = trickOrTreat(false) {"$it quarters"} //using trailing lambda syntax
-    val trickFunction = trickOrTreat(true, null)
-    treatFunction()
-    trickFunction()
+    val child = 5
+    val adult = 28
+    val senior = 87
+
+    val isMonday = true
+
+    println("The movie ticket price for a person aged $child is \$${ticketPrice(child, isMonday)}.")
+    println("The movie ticket price for a person aged $adult is \$${ticketPrice(adult, isMonday)}.")
+    println("The movie ticket price for a person aged $senior is \$${ticketPrice(senior, isMonday)}.")
 }
-//Using a function as a return type
-fun trickOrTreat(isTrick: Boolean, extraTreat: ((Int) -> String)?): () -> Unit {
-    if (isTrick){
-        return trick
-    }else {
-        if (extraTreat != null){
-            println(extraTreat(5))
-        }
-        return treat
+//Price for a ticket function
+fun ticketPrice(age: Int, isMonday: Boolean): Int{//The second int shows the return type
+    return when {
+        age <= 12 -> 15
+        age in 13..60 -> if (isMonday) 25 else 30
+        else -> 20
     }
-}
-val trick = {
-    println("No treats")
-}
-//function with lambda expression
-val treat: () -> Unit = { //specifying treat variable's datatype as () -> Unit
-    println("Have a treat")
+
 }

@@ -1,27 +1,25 @@
 fun main() {
-    /*val coins: (Int) -> String = { //omitting the parameter name and using it
-        "$it quarters"
-    }*/
-    val treatFunction = trickOrTreat(false) {"$it quarters"} //using trailing lambda syntax
-    val trickFunction = trickOrTreat(true, null)
-    treatFunction()
-    trickFunction()
+    // Test Cases
+    printFinalTemperature(27.0, "Celsius", "Fahrenheit") // Expected: 80.60
+    printFinalTemperature(350.0, "Kelvin", "Celsius")    // Expected: 76.85
+    printFinalTemperature(10.0, "Fahrenheit", "Kelvin")  // Expected: 260.93
 }
-//Using a function as a return type
-fun trickOrTreat(isTrick: Boolean, extraTreat: ((Int) -> String)?): () -> Unit {
-    if (isTrick){
-        return trick
-    }else {
-        if (extraTreat != null){
-            println(extraTreat(5))
+
+// Function to print final temperature
+fun printFinalTemperature(initialMeasurement: Double, initialUnit: String, finalUnit: String) {
+    val conversionFormula: (Double) -> Double = when (initialUnit to finalUnit) {
+        "Celsius" to "Fahrenheit" -> { temp -> temp * 9 / 5 + 32 }
+        "Fahrenheit" to "Celsius" -> { temp -> (temp - 32) * 5 / 9 }
+        "Kelvin" to "Celsius" -> { temp -> temp - 273.15 }
+        "Celsius" to "Kelvin" -> { temp -> temp + 273.15 }
+        "Fahrenheit" to "Kelvin" -> { temp -> (temp - 32) * 5 / 9 + 273.15 }
+        "Kelvin" to "Fahrenheit" -> { temp -> (temp - 273.15) * 9 / 5 + 32 }
+        else -> {
+            println("Conversion not supported.")
+            return
         }
-        return treat
     }
-}
-val trick = {
-    println("No treats")
-}
-//function with lambda expression
-val treat: () -> Unit = { //specifying treat variable's datatype as () -> Unit
-    println("Have a treat")
+
+    val finalMeasurement = String.format("%.2f", conversionFormula(initialMeasurement)) // Format to 2 decimal places
+    println("$initialMeasurement degrees $initialUnit is $finalMeasurement degrees $finalUnit")
 }

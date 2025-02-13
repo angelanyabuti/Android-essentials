@@ -9,6 +9,6 @@ The IDE used is <a href="https://developer.android.com/studio">Android Studio</a
 Examples of apps created using compose: Airbnb, Plex, Twitter and Dropbox
 # Material Components for Android <br>
 Material Components (MDC) provide modern, adaptable, and accessible design elements for building beautiful Android apps. Jetpack Compose integrates Material 3, the latest version of Material Design, offering improved theming, dynamic colors, and enhanced UI components.
-Tutorials Used: 
-Learn how to apply dynamic color with Material 3: <a href="https://codelabs.developers.google.com/codelabs/apply-dynamic-color#0">Codelab</a>
-Explore Material Design Components: <a href="https://developer.android.com/design/ui/mobile/guides/components/material-overview">Material Components</a>
+Tutorials Used: <br>
+1. Learn how to apply dynamic color with Material 3: <a href="https://codelabs.developers.google.com/codelabs/apply-dynamic-color#0">Codelab</a> <br>
+2. Explore Material Design Components: <a href="https://developer.android.com/design/ui/mobile/guides/components/material-overview">Material Components</a>

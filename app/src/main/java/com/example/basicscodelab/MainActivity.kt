@@ -1,5 +1,6 @@
 package com.example.basicscodelab
 
+import android.content.res.Configuration.UI_MODE_NIGHT_YES
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -30,6 +31,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.basicscodelab.ui.theme.BasicsCodelabTheme
@@ -126,7 +128,9 @@ fun Greeting(name: String, modifier: Modifier = Modifier) { //displays a single 
                     text = "Hello",
                 )
                 Text(
-                    text = "$name!",
+                    text = "$name!", style = MaterialTheme.typography.headlineMedium.copy(//copy is a function used to modify a predefined style
+                        fontWeight = FontWeight.ExtraBold
+                    )
                 )
             }
             ElevatedButton(
@@ -138,7 +142,13 @@ fun Greeting(name: String, modifier: Modifier = Modifier) { //displays a single 
     }
 }
 
-@Preview(showBackground = true, widthDp = 320) //helps you see how a text displays on the screen
+@Preview(
+    showBackground = true,
+    widthDp = 320,
+    uiMode = UI_MODE_NIGHT_YES,
+    name = "DarkMode"
+) //helps you see how a text displays on the screen
+@Preview(showBackground = true, widthDp = 320)
 @Composable
 fun GreetingPreview() {
     BasicsCodelabTheme {

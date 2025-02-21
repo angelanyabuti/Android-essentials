@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Basic layout</string>
     <string name="placeholder_search">Search</string>
+    <string name="ab1_invertions">ab1_invertions</string>
 </resources>

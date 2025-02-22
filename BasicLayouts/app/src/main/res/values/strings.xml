@@ -3,4 +3,9 @@
     <string name="placeholder_search">Search</string>
     <string name="ab1_invertions">ab1_invertions</string>
     <string name="nature">nature\n</string>
+    <string name="ab2_quick_yoga">yoga\n</string>
+    <string name="ab3_stretching">stretching</string>
+    <string name="ab4_tabata">pilates</string>
+    <string name="ab5_hiit">hiit</string>
+    <string name="ab6_pre_natal_yoga">prenatal</string>
 </resources>

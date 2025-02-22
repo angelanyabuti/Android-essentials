@@ -7,7 +7,9 @@ import androidx.activity.enableEdgeToEdge
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -16,6 +18,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
@@ -47,6 +51,7 @@ class MainActivity : ComponentActivity() {
                     Column(modifier = Modifier.padding(innerPadding)) {
                         SearchBar()
                         AlignYourBodyElement(text = R.string.ab1_invertions, drawable = R.drawable.ab1)
+                        AlignYourBodyRow()
                         FavoriteCollectionCard(text = R.string.nature, drawable = R.drawable.nature)
                     }
                 }
@@ -54,6 +59,21 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+private val alignYourBodyData = listOf(
+    R.drawable.ab1 to R.string.ab1_invertions,
+    R.drawable.ab2 to R.string.ab2_quick_yoga,
+    R.drawable.ab3 to R.string.ab3_stretching,
+    R.drawable.ab4 to R.string.ab4_tabata,
+    R.drawable.ab5 to R.string.ab5_hiit,
+    R.drawable.ab6 to R.string.ab6_pre_natal_yoga,
+).map { DrawableStringPair(it.first, it.second) }
+
+private data class DrawableStringPair(
+    @DrawableRes val drawable: Int,
+    @StringRes val text: Int) {
+
+}
+
 //Search bar
 @Composable
 fun SearchBar (modifier: Modifier = Modifier) {
@@ -165,6 +185,21 @@ fun FavoriteCollectionCardPreview() {
         )
     }
 }
+
+//Alligning the elements in a row
+@Composable
+fun AlignYourBodyRow(modifier: Modifier = Modifier) {
+    LazyRow (
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        contentPadding = PaddingValues(horizontal = 16.dp),
+        modifier = Modifier
+    ){
+        items(alignYourBodyData) { item ->
+            AlignYourBodyElement(item.drawable, item.text)
+        }
+    }
+}
+
 
 
 

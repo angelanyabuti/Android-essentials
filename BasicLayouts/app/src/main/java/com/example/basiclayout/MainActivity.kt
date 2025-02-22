@@ -13,12 +13,16 @@ import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyHorizontalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
@@ -50,9 +54,10 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Column(modifier = Modifier.padding(innerPadding)) {
                         SearchBar()
-                        AlignYourBodyElement(text = R.string.ab1_invertions, drawable = R.drawable.ab1)
+                        //AlignYourBodyElement(text = R.string.ab1_invertions, drawable = R.drawable.ab1)
                         AlignYourBodyRow()
-                        FavoriteCollectionCard(text = R.string.nature, drawable = R.drawable.nature)
+                        FavoriteCollectionsGrid()
+                        //FavoriteCollectionCard(text = R.string.nature, drawable = R.drawable.nature)
                     }
                 }
             }
@@ -66,6 +71,16 @@ private val alignYourBodyData = listOf(
     R.drawable.ab4 to R.string.ab4_tabata,
     R.drawable.ab5 to R.string.ab5_hiit,
     R.drawable.ab6 to R.string.ab6_pre_natal_yoga,
+).map { DrawableStringPair(it.first, it.second) }
+
+//favorite collections data
+private val favoriteCollectionsData = listOf(
+    R.drawable.nature to R.string.nature,
+    R.drawable.fc2 to R.string.fc2_nature_meditations,
+    R.drawable.fc3 to R.string.fc3_stress_and_anxiety,
+    R.drawable.fc4 to R.string.fc4_self_massage,
+    R.drawable.fc5 to R.string.fc5_overwhelmed,
+    R.drawable.fc6 to R.string.fc6_nightly_wind_down,
 ).map { DrawableStringPair(it.first, it.second) }
 
 private data class DrawableStringPair(
@@ -200,6 +215,24 @@ fun AlignYourBodyRow(modifier: Modifier = Modifier) {
     }
 }
 
+//favorite grid section
+@Composable
+fun FavoriteCollectionsGrid(
+    modifier: Modifier = Modifier
+) {
+    LazyHorizontalGrid(
+        rows = GridCells.Fixed(2),
+        contentPadding = PaddingValues(horizontal = 16.dp),
+        horizontalArrangement = Arrangement.spacedBy(16.dp),
+        verticalArrangement = Arrangement.spacedBy(16.dp),
+        modifier = modifier.height(168.dp)
+    ) {
+        items(favoriteCollectionsData) { item ->
+            FavoriteCollectionCard(item.drawable, item.text, modifier.height(80.dp))
+        }
+
+   }
+}
 
 
 

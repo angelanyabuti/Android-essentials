@@ -53,11 +53,15 @@ class MainActivity : ComponentActivity() {
             BasicLayoutTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Column(modifier = Modifier.padding(innerPadding)) {
+
                         SearchBar()
-                        //AlignYourBodyElement(text = R.string.ab1_invertions, drawable = R.drawable.ab1)
-                        AlignYourBodyRow()
-                        FavoriteCollectionsGrid()
-                        //FavoriteCollectionCard(text = R.string.nature, drawable = R.drawable.nature)
+                        HomeSection(title = R.string.align_your_body) {
+                            AlignYourBodyRow()
+                        }
+                        HomeSection(title = R.string.favorite_collections) {
+                            FavoriteCollectionsGrid()
+                        }
+
                     }
                 }
             }
@@ -233,6 +237,34 @@ fun FavoriteCollectionsGrid(
 
    }
 }
+@Composable
+fun HomeSection (
+    @StringRes title: Int,
+    modifier: Modifier = Modifier,
+    content: @Composable () -> Unit
+){
+    Column(modifier) {
+        Text(
+            text = stringResource(title),
+            style = MaterialTheme.typography.titleMedium,
+            modifier = Modifier
+                .paddingFromBaseline(top = 40.dp, bottom = 8.dp)
+                .padding(horizontal = 16.dp)
+        )
+        content()
+    }
+
+}
+@Preview(showBackground = true)
+@Composable
+fun HomeSectionPreview() {
+    BasicLayoutTheme {
+        HomeSection(R.string.align_your_body) {
+            AlignYourBodyRow()
+        }
+    }
+}
+
 
 
 

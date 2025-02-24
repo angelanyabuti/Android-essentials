@@ -327,6 +327,16 @@ fun ScreenPreview() {
         HomeScreen()
     }
 }
+@Composable
+fun MyApp() {
+    BasicLayoutTheme {
+        Scaffold (
+            bottomBar = { BottomNavigation()}
+        ){padding ->
+            HomeScreen(Modifier.padding(padding))
+        }
+    }
+}
 
 
 

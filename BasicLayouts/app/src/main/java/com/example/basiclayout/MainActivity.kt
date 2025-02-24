@@ -29,9 +29,13 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.AccountCircle
+import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.NavigationBar
+import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -259,6 +263,43 @@ fun HomeSectionPreview() {
         }
     }
 }
+//Navigation Bar
+@Composable
+private fun BottomNavigation(modifier: Modifier = Modifier) {
+    NavigationBar(
+        containerColor = MaterialTheme.colorScheme.surfaceVariant,
+        modifier = modifier
+    ){
+        NavigationBarItem(
+            selected = true,
+            onClick = {},
+            icon = {
+                Icon(
+                    imageVector = Icons.Default.Home,
+                    contentDescription = null
+                )
+            },
+            label = {
+                Text(text = stringResource(R.string.bottom_navigation_home)
+                )
+            }
+        )
+        NavigationBarItem(
+            selected = false,
+            onClick = { },
+            icon = {
+                Icon(
+                    imageVector = Icons.Default.AccountCircle,
+                    contentDescription = null
+                )
+            },
+            label = {
+                Text(text = stringResource(R.string.bottom_navigation_profile)
+                )
+            }
+        )
+    }
+}
 
 //Combining the building blocks into a full screen
 @Composable
@@ -275,7 +316,8 @@ fun HomeScreen(modifier: Modifier = Modifier){
         HomeSection(title = R.string.favorite_collections) {
             FavoriteCollectionsGrid()
         }
-        Spacer(Modifier.height(16.dp))
+        Spacer(Modifier.height(160.dp))
+        BottomNavigation()
     }
 }
 @Preview(showBackground = true)
@@ -285,6 +327,7 @@ fun ScreenPreview() {
         HomeScreen()
     }
 }
+
 
 
 

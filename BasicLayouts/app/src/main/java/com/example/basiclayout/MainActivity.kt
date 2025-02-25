@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -36,11 +37,16 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationRail
+import androidx.compose.material3.NavigationRailDefaults
+import androidx.compose.material3.NavigationRailItem
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
+import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
+import androidx.compose.material3.windowsizeclass.WindowWidthSizeClass
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -51,19 +57,19 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.basiclayout.ui.theme.BasicLayoutTheme
+import androidx.compose.material3.windowsizeclass.WindowSizeClass
+import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
+
+
 
 class MainActivity : ComponentActivity() {
+    @OptIn(ExperimentalMaterial3WindowSizeClassApi::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            BasicLayoutTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Column(modifier = Modifier.padding(innerPadding)) {
-                        HomeScreen()
-                    }
-                }
-            }
+            val windowSize = calculateWindowSizeClass(this)
+            MyApp(windowSize)
         }
     }
 }
@@ -328,7 +334,7 @@ fun ScreenPreview() {
     }
 }
 @Composable
-fun MyApp() {
+fun MyAppPortrait() {
     BasicLayoutTheme {
         Scaffold (
             bottomBar = { BottomNavigation()}
@@ -338,6 +344,80 @@ fun MyApp() {
     }
 }
 
+//The navigation Rail
+@Composable
+private fun MyNavigationRail(modifier: Modifier = Modifier) {
+    NavigationRail(
+        modifier = modifier.padding(start = 8.dp, end = 8.dp),
+        containerColor = MaterialTheme.colorScheme.background,
+
+    ) {
+        Column (
+            modifier = Modifier.fillMaxHeight(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ){
+            NavigationRailItem(
+                selected = true,
+                onClick = {},
+                icon = {
+                    Icon(
+                        imageVector = Icons.Default.Home,
+                        contentDescription = null
+                        )
+                },
+                label = {
+                    Text(text = stringResource(R.string.bottom_navigation_home)
+                    )
+                }
+
+            )
+            NavigationRailItem(
+                selected = false,
+                onClick = {},
+                icon = {
+                    Icon(
+                        imageVector = Icons.Default.AccountCircle,
+                        contentDescription = null
+                    )
+                },
+                label = {
+                    Text(text = stringResource(R.string.bottom_navigation_profile)
+                    )
+                }
+
+            )
+
+        }
+    }
+}
+//For landscape orientation
+@Composable
+fun MyAppLandscape() {
+    BasicLayoutTheme {
+        Surface(
+            modifier = Modifier.fillMaxSize(),
+            color = MaterialTheme.colorScheme.background) {
+            Row {
+                MyNavigationRail()
+                HomeScreen(modifier = Modifier.weight(1f))
+            }
+        }
+    }
+}
+
+//window size calculates the size of the screen to know which orientation it is
+@Composable
+fun MyApp(windowSize: WindowSizeClass) {
+    when (windowSize.widthSizeClass) {
+        WindowWidthSizeClass.Compact -> {
+            MyAppPortrait()
+        }
+        WindowWidthSizeClass.Expanded -> {
+            MyAppLandscape()
+        }
+    }
+}
 
 
 

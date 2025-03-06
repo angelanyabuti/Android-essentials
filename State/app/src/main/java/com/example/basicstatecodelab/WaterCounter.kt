@@ -1,5 +1,6 @@
 package com.example.basicstatecodelab
 
+import android.service.controls.Control.StatelessBuilder
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.padding
@@ -16,21 +17,30 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun WaterCounter(modifier: Modifier = Modifier) {
+fun StatelessCounter(count: Int, onIncrement: () -> Unit, modifier: Modifier = Modifier) {
 
     Column(modifier = modifier.padding(16.dp)) {
-        //changes to count are now tracked by compose
-        var count by rememberSaveable { mutableStateOf(0) }
-        if (count > 0) {
 
+        if (count > 0) {
             //This text is present when the button is clicked and count is greater than 0
             //And absent otherwise
             Text(
+                modifier = Modifier.padding(top = 8.dp),
                 text = "You've had $count glasses.",
             )
         }
-            Button(onClick = { count++ }, Modifier.padding(top = 8.dp), enabled = count < 10) {
+            Button(onClick = onIncrement, Modifier.padding(top = 8.dp), enabled = count < 10) {
                 Text("Add one")
             }
     }
+}
+
+@Composable
+fun StatefulCounter(modifier: Modifier = Modifier) {
+    //changes to count are now tracked by compose
+    var count by rememberSaveable { mutableStateOf(0) }
+    var juicecount by rememberSaveable { mutableStateOf(0) }
+    StatelessCounter(count, { count++ }, modifier)
+    StatelessCounter(juicecount, { juicecount++ }, modifier)
+
 }

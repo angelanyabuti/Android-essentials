@@ -18,7 +18,9 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun WellnessTaskItem(
     taskName: String,
+    onClose: () -> Unit,
     modifier: Modifier = Modifier
+
 ) {
     var checkedState by rememberSaveable { mutableStateOf(false) }
 
@@ -33,7 +35,7 @@ fun WellnessTaskItem(
             checked = checkedState,
             onCheckedChange = { newValue -> checkedState = newValue }
         )
-        IconButton(onClick = { /* Implement close action */ }) {
+        IconButton(onClick = { onClose() }) {
             Icon(Icons.Filled.Close, contentDescription = "Close")
         }
     }

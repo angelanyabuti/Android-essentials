@@ -13,8 +13,8 @@ Tutorials Used: <br>
 1. Learn how to apply dynamic color with Material 3: <a href="https://codelabs.developers.google.com/codelabs/apply-dynamic-color#0">Codelab</a> <br>
 2. Explore Material Design Components: <a href="https://developer.android.com/design/ui/mobile/guides/components/material-overview">Material Components</a>
 # Android Architecture
-Android Architecture refers to the layered structure of the Android operating system, which ensures efficient app development and system performance. It consists of the Linux Kernel at the core, followed by the Hardware Abstraction Layer (HAL), Android Runtime (ART) and libraries, the Application Framework, and finally the Applications layer where all user-facing apps operate. Understanding this architecture helps developers build robust, scalable, and efficient Android applications.
+Android Architecture refers to the layered structure of the Android operating system, which ensures efficient app development and system performance. It consists of the Linux Kernel at the core, followed by the Hardware Abstraction Layer (HAL), Android Runtime (ART) and libraries, the Application Framework, and finally the Applications layer where all user-facing apps operate. Understanding this architecture helps developers build robust, scalable, and efficient Android applications.</br>
 Tutorials used: <br>
-Android Architecture: <a href="https://www.geeksforgeeks.org/android-architecture/">Geeks for Geeks</a>
-Architecture Samples: <a href="https://github.com/android/architecture-samples">Android Architecture Samples</a>
+Android Architecture: <a href="https://www.geeksforgeeks.org/android-architecture/">Geeks for Geeks</a><br>
+Architecture Samples: <a href="https://github.com/android/architecture-samples">Android Architecture Samples</a><br>
 MVVM Architecture: <a href="https://www.youtube.com/watch?v=XOmRT6x20RE">UI Lover</a>

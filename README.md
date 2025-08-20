@@ -13,5 +13,9 @@ Tutorials Used: <br>
 1. Learn how to apply dynamic color with Material 3: <a href="https://codelabs.developers.google.com/codelabs/apply-dynamic-color#0">Codelab</a> <br>
 2. Explore Material Design Components: <a href="https://developer.android.com/design/ui/mobile/guides/components/material-overview">Material Components</a>
 # Architecture Patterns in Android <br>
+Android architecture patterns help to separate core logic from UI components. These architecture patterns include: MVC, MVP, MVVM. 
+Tutorials Used: <br>
+1. <a href="https://www.geeksforgeeks.org/android/android-architecture-patterns/"> Android Architecture Patterns</a>
+2. <a href="https://developer.android.com/topic/architecture"> Guide to App Architecture</a>
 # Dependency Injection
    

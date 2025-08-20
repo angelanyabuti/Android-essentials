@@ -12,3 +12,6 @@ Material Components (MDC) provide modern, adaptable, and accessible design eleme
 Tutorials Used: <br>
 1. Learn how to apply dynamic color with Material 3: <a href="https://codelabs.developers.google.com/codelabs/apply-dynamic-color#0">Codelab</a> <br>
 2. Explore Material Design Components: <a href="https://developer.android.com/design/ui/mobile/guides/components/material-overview">Material Components</a>
+#Architecture Patterns in Android <br>
+#Dependency Injection
+   
